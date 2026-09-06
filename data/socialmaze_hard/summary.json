@@ -1,0 +1,59 @@
+{
+  "dataset": "MBZUAI/SocialMaze",
+  "source_split": "hard",
+  "source_path": "source:MBZUAI/SocialMaze/hard-00000-of-00005.parquet",
+  "seed": 20260713,
+  "scanned": 150,
+  "skipped_row_groups": [],
+  "train_n": 50,
+  "test_n": 100,
+  "train": {
+    "n": 50,
+    "role_counts": {
+      "Criminal": 3,
+      "Lunatic": 18,
+      "Rumormonger": 29
+    },
+    "role_fraction": {
+      "Criminal": 0.06,
+      "Lunatic": 0.36,
+      "Rumormonger": 0.58
+    },
+    "criminal_player_counts": {
+      "1": 3,
+      "10": 5,
+      "2": 8,
+      "3": 11,
+      "4": 6,
+      "5": 1,
+      "6": 7,
+      "7": 4,
+      "8": 4,
+      "9": 1
+    }
+  },
+  "test": {
+    "n": 100,
+    "role_counts": {
+      "Investigator": 2,
+      "Lunatic": 36,
+      "Rumormonger": 62
+    },
+    "role_fraction": {
+      "Investigator": 0.02,
+      "Lunatic": 0.36,
+      "Rumormonger": 0.62
+    },
+    "criminal_player_counts": {
+      "10": 8,
+      "2": 9,
+      "3": 12,
+      "4": 10,
+      "5": 7,
+      "6": 12,
+      "7": 15,
+      "8": 9,
+      "9": 18
+    }
+  }
+}

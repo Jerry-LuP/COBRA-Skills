@@ -1,0 +1,180 @@
+version: 1
+
+experiment:
+  name: default
+  output_root: outputs
+  seed: 42
+  trials: [1, 2, 3]
+  datasets:
+    - docvqa
+    - livemath
+    - searchqa
+    - socialmaze_hard
+    - spreadsheetbench
+    - alfworld
+  resume: true
+  # all: evaluate each trial's initial pool; first_trial: only trial 1; none: skip all.
+  initial_eval: none
+
+target:
+  model: qwen3.6-35b-a3b
+  provider: local
+  temperature: 0.0
+  reasoning_effort: none
+  enable_thinking: false
+  max_completion_tokens: 16384
+
+teacher:
+  model: gpt-5.5
+  provider: custom
+  temperature: 0.0
+  reasoning_effort: medium
+  enable_thinking: false
+  max_completion_tokens: 16384
+
+embedding:
+  backend: openrouter
+  model: qwen/qwen3-embedding-4b
+  dimension: 2560
+
+harness:
+  # native, codex, or claude_code
+  backend: native
+  timeout_seconds: 600
+  context_window: 131072
+  empty_response_retries: 0
+  codex:
+    executable: scripts/harness_scripts/codex_chroot_exec.py
+    rootfs: .codex_chroot/rootfs
+    sandbox: read-only
+    approval_policy: never
+    network_access: false
+    web_search: false
+  claude_code:
+    executable: claude
+    mode: cli
+    max_thinking_tokens: 0
+
+algorithm:
+  rounds: 30
+  pool_size: 10
+  prune_count: 3
+  prune_schedule: log
+  prune_log_threshold: 0.35
+  prune_interval: 3
+  regen_sample_size: 8
+  rollout_sample_size: 8
+  eval_limit: 50
+  generate_parallel: 3
+  nu: 0.1
+  lambda: 0.03
+
+init_skills:
+  count: 10
+  sample_size: 8
+  sample_seed: 42
+  parallel: 3
+  reasoning_effort: medium
+
+datasets:
+  docvqa:
+    train_size: 50
+    test_size: 100
+    workers: 15
+    max_completion_tokens: 4096
+    task_timeout: 600
+    exec_timeout: 300
+    reasoning_effort: none
+    mode: multi
+    max_turns: 1
+    prompt_version: direct
+    image_detail: auto
+    results_file: results.jsonl
+    reward_field: hard
+    prune_cooldown_rounds: 0
+    prune_max_interval: 0
+
+  livemath:
+    train_size: 50
+    test_size: 100
+    workers: 25
+    max_completion_tokens: 16384
+    task_timeout: 600
+    exec_timeout: 300
+    reasoning_effort: none
+    mode: single
+    max_turns: 1
+    prompt_version: direct
+    image_detail: auto
+    results_file: trial_results.jsonl
+    reward_field: hard
+    prune_cooldown_rounds: 0
+    prune_max_interval: 0
+
+  searchqa:
+    train_size: 50
+    test_size: 100
+    workers: 15
+    max_completion_tokens: 4096
+    task_timeout: 600
+    exec_timeout: 120
+    reasoning_effort: none
+    mode: single
+    max_turns: 1
+    prompt_version: direct
+    image_detail: auto
+    results_file: results.jsonl
+    reward_field: hard
+    prune_cooldown_rounds: 0
+    prune_max_interval: 0
+
+  socialmaze_hard:
+    train_size: 50
+    test_size: 100
+    workers: 15
+    max_completion_tokens: 24576
+    task_timeout: 240
+    exec_timeout: 240
+    reasoning_effort: none
+    mode: single
+    max_turns: 1
+    prompt_version: direct
+    image_detail: auto
+    results_file: results.jsonl
+    reward_field: soft
+    prune_cooldown_rounds: 4
+    prune_max_interval: 7
+
+  spreadsheetbench:
+    train_size: 50
+    test_size: 100
+    workers: 15
+    max_completion_tokens: 16384
+    task_timeout: 600
+    exec_timeout: 600
+    reasoning_effort: none
+    mode: multi
+    max_turns: 0
+    prompt_version: direct
+    image_detail: auto
+    results_file: brief_result.jsonl
+    reward_field: hard
+    prune_cooldown_rounds: 0
+    prune_max_interval: 0
+
+  alfworld:
+    train_size: 50
+    test_size: 100
+    workers: 15
+    max_completion_tokens: 8192
+    task_timeout: 600
+    exec_timeout: 600
+    reasoning_effort: none
+    mode: multi
+    max_turns: 30
+    prompt_version: direct
+    image_detail: auto
+    results_file: results.jsonl
+    reward_field: hard
+    prune_cooldown_rounds: 0
+    prune_max_interval: 0

@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "dataset": "docvqa",
+  "upstream": {
+    "repo": "lmms-lab/DocVQA",
+    "config": "DocVQA",
+    "split": "validation",
+    "url": "https://huggingface.co/datasets/lmms-lab/DocVQA",
+    "official_data_url": "https://rrc.cvc.uab.es/?ch=17",
+    "license_note": "The mirror declares Apache-2.0, while the official benchmark distributes documents through the RRC portal; COBRA-Skills distributes IDs only.",
+    "revision": "539088ef8a8ada01ac8e2e6d4e372586748a265e",
+    "data_split": "val"
+  },
+  "selection": {
+    "name": "full_validation_5349",
+    "id_field": "questionId",
+    "description": "Exact ordered train/test IDs consumed by the default COBRA-Skills release experiments."
+  },
+  "splits": {
+    "train": {
+      "count": 50,
+      "id_order_sha256": "8db60b1697af161ee6fd22b01b0134b6aee44f39a54fe997e746b5cb2040e7e2"
+    },
+    "test": {
+      "count": 100,
+      "id_order_sha256": "ce9f31f9c12bbbaab769f54928c53963be57f7cfa00a3d2c6b421663e6ce618a"
+    }
+  },
+  "materialize": "cobra-materialize-data docvqa"
+}

@@ -1,0 +1,80 @@
+[project]
+name = "cobra-skills"
+version = "0.1.0"
+description = "Bandit-guided evolutionary optimization of reusable LLM skills."
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.10"
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+]
+dependencies = [
+    "openai>=1.30.0",
+    "socksio>=1.0.0,<2.0.0",
+    "numpy>=1.24.0",
+    "torch>=2.0.0",
+    "openpyxl>=3.1.0",
+    "pyyaml>=6.0",
+    "pandas>=2.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+]
+data = [
+    "datasets>=2.18.0",
+    "pillow>=10.0.0",
+]
+alfworld = [
+    "alfworld==0.4.2",
+    "gymnasium>=0.28.0",
+    "omegaconf>=2.3.0",
+]
+
+[project.scripts]
+cobras = "cobras.scripts.experiment:main"
+cobra-codex-setup = "cobras.scripts.harness_scripts.setup_codex_chroot:main"
+cobra-materialize-data = "cobras.scripts.materialize_data:main"
+
+[tool.setuptools]
+package-dir = {cobras = "."}
+include-package-data = true
+license-files = ["LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md"]
+packages = [
+    "cobras",
+    "cobras.cobras_core",
+    "cobras.cobras_core.model",
+    "cobras.scripts",
+    "cobras.scripts.harness_scripts",
+    "cobras.task_envs",
+    "cobras.task_envs.datasets",
+    "cobras.task_envs.alfworld",
+    "cobras.task_envs.alfworld.scripts",
+    "cobras.task_envs.alfworld.vendor",
+    "cobras.task_envs.docvqa",
+    "cobras.task_envs.docvqa.scripts",
+    "cobras.task_envs.livemath",
+    "cobras.task_envs.livemath.scripts",
+    "cobras.task_envs.searchqa",
+    "cobras.task_envs.searchqa.scripts",
+    "cobras.task_envs.socialmaze_hard",
+    "cobras.task_envs.socialmaze_hard.scripts",
+    "cobras.task_envs.spreadsheetbench",
+    "cobras.task_envs.spreadsheetbench.scripts",
+    "cobras.tests"
+]
+
+[tool.setuptools.package-data]
+cobras = [
+    "data/**/*",
+    "datasets/**/*",
+    "docs/*.md",
+    "data/**/*.md",
+    "data/**/LICENSE*",
+    "task_envs/*/LICENSE*",
+    "task_envs/*/vendor/NOTICE*",
+    "task_envs/*/prompts/*.md",
+]

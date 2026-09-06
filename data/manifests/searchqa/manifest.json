@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "dataset": "searchqa",
+  "upstream": {
+    "repo": "lucadiliello/searchqa",
+    "url": "https://huggingface.co/datasets/lucadiliello/searchqa",
+    "splits": [
+      "train",
+      "validation"
+    ],
+    "license_note": "The Hugging Face dataset card does not declare a dataset license; COBRA-Skills distributes IDs only.",
+    "revision": "c1a979068ba118d85467179b704031d113d689cc"
+  },
+  "selection": {
+    "name": "cobra_skills_fixed_split",
+    "id_field": "key",
+    "description": "Exact ordered train/test IDs consumed by the default COBRA-Skills release experiments."
+  },
+  "splits": {
+    "train": {
+      "count": 50,
+      "id_order_sha256": "0f938fa52d15c0518c176b914227501eebb56429aa452664769199734076a9cb"
+    },
+    "test": {
+      "count": 100,
+      "id_order_sha256": "83ee5ce0e8debaf995eefa32ef0cc80e5e83df26aee3c78d99dc9b6c9dd7e387"
+    }
+  },
+  "materialize": "cobra-materialize-data searchqa"
+}

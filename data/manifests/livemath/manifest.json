@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "dataset": "livemath",
+  "upstream": {
+    "repo": "LinyangHe/LiveMathematicianBench",
+    "url": "https://github.com/LinyangHe/LiveMathematicianBench",
+    "source_pattern": "qa_YYYYMM_final.json",
+    "license_note": "No license covering the monthly benchmark payload was located in the upstream release; COBRA-Skills distributes IDs only."
+  },
+  "selection": {
+    "name": "cobra_skills_fixed_split",
+    "id_fields": [
+      "month",
+      "no"
+    ],
+    "description": "Exact ordered train/test IDs consumed by COBRA-Skills; dev IDs are retained only to reproduce the historical choice-shuffle RNG state."
+  },
+  "transforms": {
+    "choice_shuffle_seed": 42,
+    "description": "Append the correct option to distractors, shuffle options, and rewrite labels in train/dev/test order.",
+    "split_order": [
+      "train",
+      "dev",
+      "test"
+    ]
+  },
+  "splits": {
+    "train": {
+      "count": 50,
+      "id_order_sha256": "99dadb0da758732076d1b5fe21517ad90e0f10eb0c8eea92945bf01d30e4e6bd"
+    },
+    "dev": {
+      "count": 27,
+      "id_order_sha256": "89d5fe06f3e16fe9b3e353529858183a73369d5d68144b941a97c25a265c7f3d",
+      "materialize": false
+    },
+    "test": {
+      "count": 100,
+      "id_order_sha256": "bab4555ac48c1189d7e2b7ec9e82cbe94092c1dfbe806d88ed6a5c9975f24a52"
+    }
+  },
+  "materialize": "cobra-materialize-data livemath --source-dir /path/to/monthly/files"
+}
