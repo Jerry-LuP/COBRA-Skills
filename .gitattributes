@@ -1,0 +1,7 @@
+# Third-party benchmark payloads are data, not COBRA-Skills source code.
+data/alfworld/** linguist-vendored
+data/spreadsheetbench/** linguist-vendored
+data/socialmaze_hard/** linguist-vendored
+
+# This directory contains the attributed SkillRL runtime subset.
+task_envs/alfworld/vendor/** linguist-vendored
