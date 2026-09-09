@@ -14,15 +14,15 @@ in an env file.
 
 ![COBRA-Skills framework](img/frameworks.png)
 
-**Overview of COBRA-Skills.** At each round, skills in $\mathcal{P}_t$ are
+**Overview of COBRA-Skills.** At each round, skills in $`\mathcal{P}_t`$ are
 prioritized using a neural reward predictor and LinearUCB bonus based on
-$\mathcal{H}_{t-1}$ ①, and the highest-priority skill is evaluated by
+$`\mathcal{H}_{t-1}`$ ①, and the highest-priority skill is evaluated by
 the target agent ②. The resulting reward and trajectories update the
 optimization history and scoring model ③. At scheduled population
 updates (performed periodically rather than after every round), new skills are
 evolved from accumulated evidence ④, and the updated scores identify
 low-priority skills, which are replaced by the newly evolved skills to form
-$\mathcal{P}_{t+1}$ ⑤. Dashed borders and arrows indicate scheduled-only
+$`\mathcal{P}_{t+1}`$ ⑤. Dashed borders and arrows indicate scheduled-only
 operations.
 
 ## Main Results
