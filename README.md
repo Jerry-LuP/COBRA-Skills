@@ -1,5 +1,8 @@
 # COBRA-Skills
 
+[![arXiv](https://img.shields.io/badge/arXiv-2609.11682-B31B1B?logo=arxiv&logoColor=white)](https://arxiv.org/pdf/2609.11682)
+[![Hugging Face Paper](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Paper-FFD21E)](https://huggingface.co/papers/2609.11682)
+
 COBRA-Skills optimizes reusable task skills with a fixed-size evolutionary
 population and an NN + LinearUCB bandit. The bandit allocates target-model
 evaluations among current skills; scheduled evolutionary updates regenerate,
